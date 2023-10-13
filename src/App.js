@@ -1,55 +1,54 @@
-import React, {StrictMode} from 'react';
+
 import './App.css';
 
+// можно использовать деструктуризацию
+// function WhoAmI({name, surname, link}) {...
 
-const Header = () => {
-  return <h2>Hello World!</h2>
+function WhoAmI(props) {
+  return (
+    <div>
+      <h1>My name is {props.name}, surname - {props.surname} </h1>
+      <a href={props.link}>My profile</a>
+    </div>
+  )
 }
 
-// const Field = () => {
-//   const holder = 'Enter here'
-//   const styleField = {
-//       width: '300px'
-//     }
-//   return <input 
-//     type="text" 
-//     placeholder={holder} 
-//     style={styleField}/>
-// }
-
-class Field extends React.Component{
-  render() {
-    const holder = 'Enter here'
-    const styleField = {
-      width: '300px'
-    }
-    return <input 
-              type="text" 
-              placeholder={holder} 
-              style={styleField}/>
-  }
-}
-
-function Btn() {
-  const text = 'Log in'
-  const logged = true
-  // const p = <p>LOG IN</p>
-  // const res = () => {
-  //   return 'Log in'
-  // }
-  return <button>{logged ? 'Enter' : text}</button>
-}
 
 function App() {
   return (
     <div className="App">
-      <StrictMode>
-        <Header />
-      </StrictMode>
-      <Field />
-      <Btn />
+        <WhoAmI name="John" surname="Smith" link="ya.ru"/>
+        <WhoAmI name="Alex" surname="Shepard" link="vk.ru"/>
     </div>
   );
 }
-export {Header};
+
+
+
+// в пропс можем передавать все, что угодно: объекты 
+
+// function App() {
+//   return (
+//     <div className="App">
+//         <WhoAmI name={{firstName:'John'}} surname="Smith" link="ya.ru"/>
+//         <WhoAmI name={{firstName:'Alex'}} surname="Shepard" link="vk.ru"/>
+//     </div>
+//   );
+// }
+
+// {/* <h1>My name is {name.firstName}, surname - {props.surname} </h1> */}
+
+// функции
+
+// function App() {
+//   return (
+//     <div className="App">
+//         <WhoAmI name={() => { return 'John'}} surname="Smith" link="ya.ru"/>
+//         <WhoAmI name={() => { return 'Alex'}} surname="Shepard" link="vk.ru"/>
+//     </div>
+//   );
+// }
+
+//{/* <h1>My name is {name()}, surname - {props.surname} </h1> */}
+
 export default App;
